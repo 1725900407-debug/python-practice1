@@ -1,0 +1,23 @@
+{
+  "verified": true,
+  "total": 100,
+  "counts": {
+    "short": 30,
+    "debug": 20,
+    "program": 20,
+    "transfer": 20,
+    "homework": 10
+  },
+  "executableExercises": 70,
+  "shortReviewed": 30,
+  "shortReviewMethod": "逐项核对题面、答案与概念解释；非自动执行的选择题",
+  "regressionTests": 20,
+  "debugStartersRejected": 20,
+  "browserValidated": true,
+  "referenceCases": 140,
+  "uiValidated": true,
+  "uiChecks": 35,
+  "contentSha256": "8746d1ead30c5e0bb10c56bb499b25c362f2b9c190d391bf4548086194e0119b",
+  "engineSha256": "308463efa1b226f1aac6cd9c35bb7b5069bff82a4cb56a7bd0684f9d6dd75d8a",
+  "scope": "参考程序、故障样例、边界回归及浏览器运行核验；不保证任意写法都可自动判定，也不是考试认证。"
+}

@@ -1,0 +1,4033 @@
+{
+  "questions": [
+    {
+      "id": "H01",
+      "title": "The Lab Depot",
+      "topic": "condition",
+      "kind": "homework",
+      "en": "Item price is $22.50. Read the number of items and the company name. Apply a 10% discount only if the name is \"The Lab Depot\"; otherwise print the total without a discount. Platform output convention based on the example: show the final amount with a dollar sign and exactly two decimal places. Prompt wording is not graded.",
+      "zh": "每件 $22.50。读入购买数量、公司名称。只有名称恰好为 The Lab Depot 时减去总价的 10%，否则不打折。练习输出约定：金额带 $，保留两位小数；输入提示文字不参与判题。",
+      "solution": "n = int(input(\"Number of items: \"))\nname = input(\"Company name: \")\ntotal = n * 22.50\nif name == \"The Lab Depot\":\n    total = total - total * 0.10\n    print(f\"Discounted total: ${total:.2f}\")\nelse:\n    print(f\"Total cost: ${total:.2f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "10",
+            "The Lab Depot"
+          ],
+          "expected": 202.5,
+          "label": "10 / The Lab Depot"
+        },
+        {
+          "inputs": [
+            "1",
+            "The Lab Depot"
+          ],
+          "expected": 20.25,
+          "label": "1 / The Lab Depot"
+        },
+        {
+          "inputs": [
+            "4",
+            "Other"
+          ],
+          "expected": 90,
+          "label": "4 / Other"
+        },
+        {
+          "inputs": [
+            "4",
+            "the lab depot"
+          ],
+          "expected": 90,
+          "label": "4 / the lab depot"
+        }
+      ],
+      "required": [],
+      "validator": "money",
+      "source": "附件第 1 题",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 1
+    },
+    {
+      "id": "H02",
+      "title": "Quantity discount",
+      "topic": "condition",
+      "kind": "homework",
+      "en": "Each item costs $20.00. For 1–5 items, discounts are 5%, 6%, 7%, 8%, 9%. Above 5 items, the discount is 10%. Display the discount percentage only for 1–5 items, and display the discounted total in both branches. Platform output convention: include a dollar sign and exactly two decimals for the total. For 1–5 items include the discount followed by %; above 5 do not include a percentage. Inputs tested are positive integer quantities.",
+      "zh": "每件 $20。1～5 件分别优惠 5%、6%、7%、8%、9%；超过 5 件优惠 10%。前一个分支显示百分比，后一个分支只显示折后金额。金额按示例保留两位小数。没有额外增加负数或零输入判错条件。",
+      "solution": "n = int(input(\"Number of items: \"))\nif n <= 5:\n    rate = n + 4\n    total = n * 20 * (1 - rate / 100)\n    print(f\"Discounted total ({rate}% off): ${total:.2f}\")\nelse:\n    total = n * 20 * 0.9\n    print(f\"Total cost less discount: ${total:.2f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "1"
+          ],
+          "expected": 19.0,
+          "label": "1"
+        },
+        {
+          "inputs": [
+            "2"
+          ],
+          "expected": 37.599999999999994,
+          "label": "2"
+        },
+        {
+          "inputs": [
+            "3"
+          ],
+          "expected": 55.8,
+          "label": "3"
+        },
+        {
+          "inputs": [
+            "4"
+          ],
+          "expected": 73.60000000000001,
+          "label": "4"
+        },
+        {
+          "inputs": [
+            "5"
+          ],
+          "expected": 91.0,
+          "label": "5"
+        },
+        {
+          "inputs": [
+            "6"
+          ],
+          "expected": 108.0,
+          "label": "6"
+        },
+        {
+          "inputs": [
+            "12"
+          ],
+          "expected": 216.0,
+          "label": "12"
+        }
+      ],
+      "required": [],
+      "validator": "quantity",
+      "source": "附件第 2 题",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 2
+    },
+    {
+      "id": "H03",
+      "title": "Deduct from 100",
+      "topic": "input",
+      "kind": "homework",
+      "en": "Ask \"Shall we begin y/n?\" If the user does not want to begin, display \"Bye Bye\". Otherwise read 3 numbers and display 100 minus their sum.",
+      "zh": "读 y/n。n 时输出 Bye Bye，不再读数字；y 时读入 3 个数，输出 100 减去三数之和。附件没有规定其他输入的处理；测试仅覆盖 y 与 n。",
+      "solution": "begin = input(\"Shall we begin y/n? \")\nif begin == \"y\":\n    a = float(input(\"Number 1: \"))\n    b = float(input(\"Number 2: \"))\n    c = float(input(\"Number 3: \"))\n    print(f\"The three numbers deducted from 100 is {100-a-b-c:g}\")\nelse:\n    print(\"Bye Bye\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "n"
+          ],
+          "expected": "",
+          "label": "n"
+        },
+        {
+          "inputs": [
+            "y",
+            "10",
+            "20",
+            "30"
+          ],
+          "expected": 40,
+          "label": "y / 10 / 20 / 30"
+        },
+        {
+          "inputs": [
+            "y",
+            "1.5",
+            "2.25",
+            "3"
+          ],
+          "expected": 93.25,
+          "label": "y / 1.5 / 2.25 / 3"
+        }
+      ],
+      "required": [],
+      "validator": "deduct",
+      "source": "附件第 3 题",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 3
+    },
+    {
+      "id": "H04",
+      "title": "Tiered discount table",
+      "topic": "format",
+      "kind": "homework",
+      "en": "Use if-elif: purchase >=1000 gets 20%, >=500 gets 10%, >=200 gets 5%, below 200 gets no discount. Display Purchase Amount, Discount, Total as a table. Use the headers Purchase Amount, Discount, Total, then a new line with those three amounts in that order, each with $ and two decimals. Alignment spaces may vary.",
+      "zh": "用 if / elif 分档：≥1000 为 20%，≥500 为 10%，≥200 为 5%，低于 200 不优惠。三列分别是原价、折扣金额、折后金额。按图片示例显示表头、$ 和两位小数；列间空格可不同。",
+      "solution": "amount = float(input(\"Purchase amount: \"))\nif amount >= 1000:\n    rate = 0.20\nelif amount >= 500:\n    rate = 0.10\nelif amount >= 200:\n    rate = 0.05\nelse:\n    rate = 0\nsaving = amount * rate\nprint(\"Purchase Amount    Discount    Total\")\nprint(f\"${amount:.2f}    ${saving:.2f}    ${amount-saving:.2f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "0"
+          ],
+          "expected": [
+            0,
+            0,
+            0
+          ],
+          "label": "金额 0"
+        },
+        {
+          "inputs": [
+            "199.99"
+          ],
+          "expected": [
+            199.99,
+            0.0,
+            199.99
+          ],
+          "label": "金额 199.99"
+        },
+        {
+          "inputs": [
+            "200"
+          ],
+          "expected": [
+            200,
+            10.0,
+            190.0
+          ],
+          "label": "金额 200"
+        },
+        {
+          "inputs": [
+            "200.01"
+          ],
+          "expected": [
+            200.01,
+            10.0005,
+            190.00949999999997
+          ],
+          "label": "金额 200.01"
+        },
+        {
+          "inputs": [
+            "499.99"
+          ],
+          "expected": [
+            499.99,
+            24.9995,
+            474.9905
+          ],
+          "label": "金额 499.99"
+        },
+        {
+          "inputs": [
+            "500"
+          ],
+          "expected": [
+            500,
+            50.0,
+            450.0
+          ],
+          "label": "金额 500"
+        },
+        {
+          "inputs": [
+            "500.01"
+          ],
+          "expected": [
+            500.01,
+            50.001000000000005,
+            450.009
+          ],
+          "label": "金额 500.01"
+        },
+        {
+          "inputs": [
+            "999.99"
+          ],
+          "expected": [
+            999.99,
+            99.99900000000001,
+            899.991
+          ],
+          "label": "金额 999.99"
+        },
+        {
+          "inputs": [
+            "1000"
+          ],
+          "expected": [
+            1000,
+            200.0,
+            800.0
+          ],
+          "label": "金额 1000"
+        },
+        {
+          "inputs": [
+            "1000.01"
+          ],
+          "expected": [
+            1000.01,
+            200.002,
+            800.008
+          ],
+          "label": "金额 1000.01"
+        }
+      ],
+      "required": [
+        "elif"
+      ],
+      "validator": "table",
+      "source": "附件第 4 题",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 4
+    },
+    {
+      "id": "H05",
+      "title": "Calling one function from another",
+      "topic": "function",
+      "kind": "homework",
+      "en": "Create class_hours.py following the supplied code: each class has 10 × 1.5 tutorial hours and 7 × 1 lecture hours. hours_classes() returns the hours per class. total_hours(num_classes) calls it and returns the total. Read the class count and print Total Hours using .0f. The supplied function names hours_classes and total_hours must be used. Print the exact sentence Total Hours: <rounded integer>. (with a period). Defining the called function first is a suggestion; the actual requirement is that names exist when called.",
+      "zh": "按附件代码建立 hours_classes() 和 total_hours(num_classes)，每门课 10×1.5+7 小时。第二个函数调用第一个。读课程数，输出 Total Hours: {结果:.0f}.。附件把被调用函数先定义作为建议；Python 实际要求是调用发生时名称已定义，不要求两条 def 固定先后。",
+      "solution": "def hours_classes():\n    return 10 * 1.5 + 7\n\ndef total_hours(num_classes):\n    return hours_classes() * num_classes\n\nnumber_of_classes = int(input(\"How many classes are there? \"))\nprint(f\"Total Hours: {total_hours(number_of_classes):.0f}.\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "1"
+          ],
+          "expected": 22,
+          "label": "1"
+        },
+        {
+          "inputs": [
+            "3"
+          ],
+          "expected": 66,
+          "label": "3"
+        },
+        {
+          "inputs": [
+            "0"
+          ],
+          "expected": 0,
+          "label": "0"
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "nested",
+        "numeric_return"
+      ],
+      "validator": "hours",
+      "source": "附件第 5 题",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 5,
+      "filename": "class_hours.py",
+      "requiredNames": [
+        "hours_classes",
+        "total_hours"
+      ]
+    },
+    {
+      "id": "H06",
+      "title": "Miles ↔ kilometres",
+      "topic": "function",
+      "kind": "homework",
+      "en": "Read a distance and its unit. Call the appropriate function. miles = kilometres / 1.60934; kilometers = miles * 1.60934. If the unit is neither kilometers nor miles, display an invalid-unit message. Platform convention: accept exact units Kilometers and Miles from the example. The source prose and example differ in capitalization, so lowercase inputs are not hidden tests. Print the converted value with two decimals and the target unit miles/kilometers. Invalid-unit messages must contain invalid.",
+      "zh": "输入距离和单位，按单位调用不同转换函数。miles=kilometres/1.60934；kilometers=miles×1.60934。图片提示和示例用 Kilometers、Miles（大写首字母），正文用小写。原题没有严格规定大小写接受策略：本练习明确使用这两个示例词，不额外测试小写或英式拼写；无效单位用 Feet 测试。输出按示例保留两位小数及转换后的单位。",
+      "solution": "def to_miles(km):\n    return km / 1.60934\n\ndef to_kilometers(miles):\n    return miles * 1.60934\n\ndistance = float(input(\"Distance: \"))\nunit = input(\"Unit (Kilometers or Miles): \")\nif unit == \"Kilometers\":\n    print(f\"Converted distance: {to_miles(distance):.2f} miles\")\nelif unit == \"Miles\":\n    print(f\"Converted distance: {to_kilometers(distance):.2f} kilometers\")\nelse:\n    print(\"This unit is invalid\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "100",
+            "Miles"
+          ],
+          "expected": 160.934,
+          "label": "100 / Miles",
+          "unit": "kilometers"
+        },
+        {
+          "inputs": [
+            "1.60934",
+            "Kilometers"
+          ],
+          "expected": 1,
+          "label": "1.60934 / Kilometers",
+          "unit": "miles"
+        },
+        {
+          "inputs": [
+            "0",
+            "Miles"
+          ],
+          "expected": 0,
+          "label": "0 / Miles",
+          "unit": "kilometers"
+        },
+        {
+          "inputs": [
+            "10",
+            "Feet"
+          ],
+          "expected": "",
+          "label": "10 / Feet",
+          "invalid": true
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "numeric_return"
+      ],
+      "validator": "convert",
+      "source": "附件第 6 题",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 6
+    },
+    {
+      "id": "H07",
+      "title": "A movie list",
+      "topic": "list",
+      "kind": "homework",
+      "en": "Create a list of three movies you like. Add three more using extend(), sort the list, delete one movie using del, and print the list. Save as movies.py.",
+      "zh": "创建包含 3 个喜欢的电影的列表。用 extend() 再加入 3 个，用 sort() 原地排序，再用 del 删除 1 个，打印检查结果。电影名和删除哪部可自行选择，判题不限定为示例答案。",
+      "solution": "movies = [\"Up\", \"Coco\", \"Dune\"]\nmovies.extend([\"Soul\", \"Arrival\", \"Jaws\"])\nmovies.sort()\ndel movies[2]\nprint(movies)\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": null,
+          "label": "无输入"
+        }
+      ],
+      "required": [
+        "extend",
+        "sort",
+        "del"
+      ],
+      "validator": "movies",
+      "source": "附件第 7 题",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 7,
+      "filename": "movies.py"
+    },
+    {
+      "id": "H08",
+      "title": "Seven attempts, not seven successes",
+      "topic": "list",
+      "kind": "homework",
+      "en": "Create days_of_week.py. A function checks that a day is valid and not already entered, tells the user about duplicates or invalid days, and returns True/False. Give exactly 7 attempts, add accepted days, show the list and report how many were correct. Use the capitalized English names Monday through Sunday. The screenshot rejects wednesday. Print the accepted list and finish with the accepted count. Explain duplicates using already or duplicate; explain invalid days using invalid or not a day. These keyword conventions make free-form messages machine-checkable.",
+      "zh": "恰好问 7 次。函数检查是否为有效星期、是否重复；重复或无效时说明原因，返回 True/False。仅 True 时加入列表并显示。结尾报告答对数量。图片明确将 wednesday 判错，所以不自动转小写或放宽大小写。重复和无效输入也占一次机会。",
+      "solution": "def check_day(day, entered):\n    valid = [\"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\", \"Sunday\"]\n    if day in entered:\n        print(\"Already entered\")\n        return False\n    if day not in valid:\n        print(\"Not a day of the week\")\n        return False\n    return True\n\nentered = []\nfor attempt in range(7):\n    day = input(\"Enter a day of the week: \")\n    if check_day(day, entered):\n        entered.append(day)\n        print(entered)\nprint(f\"You have correctly entered {len(entered)} day(s) of the week.\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "expected": 7,
+          "label": "7 个有效星期"
+        },
+        {
+          "inputs": [
+            "Monday",
+            "Monday",
+            "wednesday",
+            "March",
+            "Tuesday",
+            "Tomorrow",
+            "Thursday"
+          ],
+          "expected": 3,
+          "label": "重复、大小写与无效输入"
+        },
+        {
+          "inputs": [
+            "x",
+            "x",
+            "x",
+            "x",
+            "x",
+            "x",
+            "x"
+          ],
+          "expected": 0,
+          "label": "7 次全错"
+        },
+        {
+          "inputs": [
+            "Sunday",
+            "Sunday",
+            "Sunday",
+            "Sunday",
+            "Sunday",
+            "Sunday",
+            "Sunday"
+          ],
+          "expected": 1,
+          "label": "7 次重复"
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "bool"
+      ],
+      "validator": "days",
+      "source": "附件第 8 题",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 8,
+      "filename": "days_of_week.py"
+    },
+    {
+      "id": "H09",
+      "title": "Separate polygons",
+      "topic": "turtle",
+      "kind": "homework",
+      "en": "Create separate_polygons.py. Use a polygon function taking the number of sides. Turn by 360/n and use side length 180/n. Loop over 3 to 12 sides, move using setpos, penup/pendown, and set line and fill colors so the polygons do not overlap. For this browser exercise use begin_fill/end_fill for each polygon. The image refers to an output diagram, but the diagram is absent; colors and layout are your choice. The checker conservatively requires non-overlapping bounding boxes.",
+      "zh": "用带边数参数的函数绘制多边形，边长 180/n，转角 360/n。循环覆盖 3～12；每个图形前抬笔、setpos、落笔；设置线条和填充颜色。本平台采用 begin_fill/end_fill 验证填充。附件写了“如下图”，但上传图片没有示例图，不限定具体配色或布局。",
+      "solution": "import turtle as t\n\ndef polygon(n):\n    t.begin_fill()\n    for side in range(n):\n        t.forward(180 / n)\n        t.left(360 / n)\n    t.end_fill()\n\nt.pencolor(\"#285e54\")\nt.fillcolor(\"#b6efde\")\nfor n in range(3, 13):\n    t.penup()\n    t.setpos(((n-3) % 5) * 120 - 260, ((n-3) // 5) * 140 - 100)\n    t.pendown()\n    polygon(n)\nt.done()\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": null,
+          "label": "无输入",
+          "ns": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "for"
+      ],
+      "validator": "polygons",
+      "source": "附件第 9 题",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 9,
+      "filename": "separate_polygons.py"
+    },
+    {
+      "id": "H10",
+      "title": "Two ways to count down",
+      "topic": "loop",
+      "kind": "homework",
+      "en": "Write two separate programs: one using for, another using while. Print 10 times 9 is 90 down to 1 times 9 is 9, one line per product.",
+      "zh": "分别提交两份程序：一份用 for，一份用 while。从 10 到 1 输出乘 9 的结果，恰好 10 行，首末行和句式须与附件一致。",
+      "solution": "for n in range(10, 0, -1):\n    print(f\"{n} times 9 is {n*9}\")\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": "10 times 9 is 90\n9 times 9 is 81\n8 times 9 is 72\n7 times 9 is 63\n6 times 9 is 54\n5 times 9 is 45\n4 times 9 is 36\n3 times 9 is 27\n2 times 9 is 18\n1 times 9 is 9",
+          "label": "无输入"
+        }
+      ],
+      "required": [],
+      "validator": "exact",
+      "source": "附件第 10 题",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 10,
+      "dual": true,
+      "solutionAlt": "n = 10\nwhile n >= 1:\n    print(f\"{n} times 9 is {n*9}\")\n    n -= 1\n"
+    },
+    {
+      "id": "S01",
+      "title": "input() 的返回类型",
+      "topic": "input",
+      "kind": "short",
+      "en": "What type does input() return?",
+      "zh": "输入 12 后，input() 返回的类型是什么？",
+      "solution": 0,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "str",
+        "int",
+        "float"
+      ],
+      "explanation": "input() 返回字符串 \"12\"，数值运算前按需求转换。"
+    },
+    {
+      "id": "S02",
+      "title": "整数和浮点转换",
+      "topic": "input",
+      "kind": "short",
+      "en": "What does int(\"2.5\") do?",
+      "zh": "int(\"2.5\") 会怎样？",
+      "solution": 2,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "返回 2",
+        "返回 2.5",
+        "抛出 ValueError"
+      ],
+      "explanation": "带小数点的字符串不能直接 int()；使用 float()。"
+    },
+    {
+      "id": "S03",
+      "title": "表达式优先级",
+      "topic": "input",
+      "kind": "short",
+      "en": "Predict 100 - (10 + 20 + 30).",
+      "zh": "100 - (10 + 20 + 30) 的值是什么？",
+      "solution": 0,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "40",
+        "100",
+        "60"
+      ],
+      "explanation": "先算括号内的和，再从 100 减去。"
+    },
+    {
+      "id": "S04",
+      "title": "变量与引号",
+      "topic": "input",
+      "kind": "short",
+      "en": "What is printed?",
+      "zh": "name = \"Ada\"\nprint(\"name\", name)",
+      "solution": 0,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "name Ada",
+        "Ada Ada",
+        "name name"
+      ],
+      "explanation": "引号内是字面字符串，无引号的 name 读取变量。"
+    },
+    {
+      "id": "S05",
+      "title": "数字还是文字",
+      "topic": "input",
+      "kind": "short",
+      "en": "Predict the output.",
+      "zh": "a = input() # 输入 3\nprint(a * 2)",
+      "solution": 1,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "6",
+        "33",
+        "TypeError"
+      ],
+      "explanation": "字符串乘整数会重复；int(a)*2 才是数值乘法。"
+    },
+    {
+      "id": "S06",
+      "title": "f-string 中的花括号",
+      "topic": "format",
+      "kind": "short",
+      "en": "Predict the output.",
+      "zh": "n = 4\nprint(f\"${n*2:.2f}\")",
+      "solution": 0,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "$8.00",
+        "$n*2",
+        "8"
+      ],
+      "explanation": "f 启用表达式插入，{} 求值，$ 是普通字符，:.2f 保留两位小数。"
+    },
+    {
+      "id": "S07",
+      "title": "缺失 f 前缀",
+      "topic": "format",
+      "kind": "short",
+      "en": "Predict the output.",
+      "zh": "n = 7\nprint(\"{n}\")",
+      "solution": 1,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "7",
+        "{n}",
+        "SyntaxError"
+      ],
+      "explanation": "没有 f，花括号不会插入变量。"
+    },
+    {
+      "id": "S08",
+      "title": "零位小数不截断",
+      "topic": "format",
+      "kind": "short",
+      "en": "Predict the output.",
+      "zh": "print(f\"{2.8:.0f}\")",
+      "solution": 1,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "2",
+        "3",
+        "2.8"
+      ],
+      "explanation": "格式化到零位小数会舍入；int(2.8) 才是向零截断。"
+    },
+    {
+      "id": "S09",
+      "title": "百分号的作用",
+      "topic": "format",
+      "kind": "short",
+      "en": "Predict the output.",
+      "zh": "rate = 10\nprint(f\"{rate}%\")",
+      "solution": 0,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "10%",
+        "0.1",
+        "1000"
+      ],
+      "explanation": "% 在这个字符串中是普通字符，不会除以 100。"
+    },
+    {
+      "id": "S10",
+      "title": "折扣金额与折后金额",
+      "topic": "format",
+      "kind": "short",
+      "en": "What are the saving and total?",
+      "zh": "原价 80，折扣 25%。折扣金额和折后金额分别是？",
+      "solution": 0,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "20 和 60",
+        "25 和 55",
+        "60 和 20"
+      ],
+      "explanation": "折扣金额=80×0.25=20，折后金额=80−20=60。"
+    },
+    {
+      "id": "S11",
+      "title": "赋值与比较",
+      "topic": "condition",
+      "kind": "short",
+      "en": "Which expression tests equality?",
+      "zh": "比较 name 是否等于 \"The Lab Depot\" 应使用？",
+      "solution": 1,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "name = \"The Lab Depot\"",
+        "name == \"The Lab Depot\"",
+        "name := \"The Lab Depot\""
+      ],
+      "explanation": "= 赋值，== 比较；if 需要条件表达式。"
+    },
+    {
+      "id": "S12",
+      "title": "分档边界",
+      "topic": "condition",
+      "kind": "short",
+      "en": "Which rate applies to exactly 500?",
+      "zh": "附件金额折扣题，恰好 500 对应什么折扣率？",
+      "solution": 1,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "5%",
+        "10%",
+        "20%"
+      ],
+      "explanation": "500 满足 >=500，但不满足 >=1000。"
+    },
+    {
+      "id": "S13",
+      "title": "分支顺序",
+      "topic": "condition",
+      "kind": "short",
+      "en": "Predict this code for amount=1200.",
+      "zh": "if amount >= 200: rate=5\nelif amount >= 1000: rate=20\namount 为 1200 时 rate 是？",
+      "solution": 1,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "20",
+        "5",
+        "两个分支都执行"
+      ],
+      "explanation": "if 首个真分支结束分档链。高门槛应放在前面。"
+    },
+    {
+      "id": "S14",
+      "title": "严格字符串比较",
+      "topic": "condition",
+      "kind": "short",
+      "en": "Does this name match?",
+      "zh": "\"The Lab Depot\" == \"the lab depot\" 是？",
+      "solution": 1,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "True",
+        "False",
+        "SyntaxError"
+      ],
+      "explanation": "字符串比较区分大小写，不自动加宽容规则。"
+    },
+    {
+      "id": "S15",
+      "title": "return 与 print",
+      "topic": "function",
+      "kind": "short",
+      "en": "What is returned?",
+      "zh": "def f():\n    print(3)\nx = f()\nx 的值是什么？",
+      "solution": 1,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "3",
+        "None",
+        "\"3\""
+      ],
+      "explanation": "print 输出但不返回该值。没有 return 时返回 None。"
+    },
+    {
+      "id": "S16",
+      "title": "形参和实参",
+      "topic": "function",
+      "kind": "short",
+      "en": "Identify the parameter.",
+      "zh": "def cost(n): return n*20\ncost(4)\n形参是？",
+      "solution": 0,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "n",
+        "4",
+        "cost"
+      ],
+      "explanation": "n 是定义时的形参，4 是调用时传入的实参。"
+    },
+    {
+      "id": "S17",
+      "title": "函数定义先后",
+      "topic": "function",
+      "kind": "short",
+      "en": "Will this run?",
+      "zh": "def outer(): return inner()\ndef inner(): return 3\nprint(outer())",
+      "solution": 0,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "输出 3",
+        "NameError",
+        "outer 必须写在 inner 后"
+      ],
+      "explanation": "实际调用 outer 时 inner 已定义，因此可以运行。"
+    },
+    {
+      "id": "S18",
+      "title": "调用发生太早",
+      "topic": "function",
+      "kind": "short",
+      "en": "What happens?",
+      "zh": "def outer(): return inner()\nprint(outer())\ndef inner(): return 3",
+      "solution": 1,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "输出 3",
+        "NameError",
+        "输出 None"
+      ],
+      "explanation": "调用 outer 时 inner 的 def 尚未执行，名称未定义。"
+    },
+    {
+      "id": "S19",
+      "title": "局部变量",
+      "topic": "function",
+      "kind": "short",
+      "en": "What happens?",
+      "zh": "def f():\n    local = 2\nf()\nprint(local)",
+      "solution": 2,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "2",
+        "None",
+        "NameError"
+      ],
+      "explanation": "函数内的局部变量不能直接在顶层使用。"
+    },
+    {
+      "id": "S20",
+      "title": "布尔返回",
+      "topic": "function",
+      "kind": "short",
+      "en": "What does the function return?",
+      "zh": "def valid(n): return n >= 5\nvalid(5)",
+      "solution": 0,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "True",
+        "5",
+        "False"
+      ],
+      "explanation": "比较表达式返回 bool，>= 包含边界 5。"
+    },
+    {
+      "id": "S21",
+      "title": "索引从零开始",
+      "topic": "list",
+      "kind": "short",
+      "en": "What is items[1]?",
+      "zh": "items = [\"A\", \"B\", \"C\"]\nitems[1] 是？",
+      "solution": 1,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "索引 0 是 A，索引 1 是 B。"
+    },
+    {
+      "id": "S22",
+      "title": "append 和 extend",
+      "topic": "list",
+      "kind": "short",
+      "en": "What is the list length?",
+      "zh": "a = [1]\na.append([2,3])\nlen(a) 是？",
+      "solution": 0,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "2",
+        "3",
+        "1"
+      ],
+      "explanation": "append 把整个列表作为一个元素添加。extend 才会逐个添加。"
+    },
+    {
+      "id": "S23",
+      "title": "sort 的返回值",
+      "topic": "list",
+      "kind": "short",
+      "en": "What does sort() return?",
+      "zh": "a = [3,1]\nx = a.sort()\nx 是？",
+      "solution": 1,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "[1,3]",
+        "None",
+        "[3,1]"
+      ],
+      "explanation": "sort 原地改变 a，返回 None。"
+    },
+    {
+      "id": "S24",
+      "title": "按索引删除",
+      "topic": "list",
+      "kind": "short",
+      "en": "Predict the list.",
+      "zh": "a = [\"C\",\"A\",\"B\"]\na.sort()\ndel a[1]\nprint(a)",
+      "solution": 0,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "[\"A\",\"C\"]",
+        "[\"A\",\"B\"]",
+        "[\"B\",\"C\"]"
+      ],
+      "explanation": "排序为 A,B,C，del a[1] 删除 B。"
+    },
+    {
+      "id": "S25",
+      "title": "range 终点不包含",
+      "topic": "loop",
+      "kind": "short",
+      "en": "What values occur?",
+      "zh": "list(range(3,7)) 是？",
+      "solution": 0,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "[3,4,5,6]",
+        "[3,4,5,6,7]",
+        "[4,5,6,7]"
+      ],
+      "explanation": "起点包含，终点 7 不包含。"
+    },
+    {
+      "id": "S26",
+      "title": "负步长",
+      "topic": "loop",
+      "kind": "short",
+      "en": "How do you count from 10 to 1?",
+      "zh": "哪句 range 依次产生 10 到 1？",
+      "solution": 1,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "range(10,1,-1)",
+        "range(10,0,-1)",
+        "range(1,10,-1)"
+      ],
+      "explanation": "负步长时终点同样不包含，需用 0 才包括 1。"
+    },
+    {
+      "id": "S27",
+      "title": "固定尝试与成功次数",
+      "topic": "loop",
+      "kind": "short",
+      "en": "When does the homework stop?",
+      "zh": "星期题前 3 次都错，已经用了几次机会？",
+      "solution": 1,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "0 次",
+        "3 次",
+        "直到成功才计次数"
+      ],
+      "explanation": "附件规定 7 次尝试，每个输入都占一次。"
+    },
+    {
+      "id": "S28",
+      "title": "累加器与计数器",
+      "topic": "loop",
+      "kind": "short",
+      "en": "What are total and count?",
+      "zh": "total=0; count=0\nfor n in [2,5]:\n    total += n\n    count += 1",
+      "solution": 0,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "total=7,count=2",
+        "total=2,count=7",
+        "total=7,count=7"
+      ],
+      "explanation": "累加器加数值，计数器加发生次数。"
+    },
+    {
+      "id": "S29",
+      "title": "多边形的转角",
+      "topic": "turtle",
+      "kind": "short",
+      "en": "What is the external angle?",
+      "zh": "画 6 边形，每边后转向角应是多少？",
+      "solution": 1,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "120°",
+        "60°",
+        "30°"
+      ],
+      "explanation": "turtle 转外角 360/6=60，不是内角 120。"
+    },
+    {
+      "id": "S30",
+      "title": "移动时的笔状态",
+      "topic": "turtle",
+      "kind": "short",
+      "en": "Which order avoids a connecting line?",
+      "zh": "从一个图形移动到另一个图形，应使用？",
+      "solution": 1,
+      "cases": [],
+      "required": [],
+      "validator": "exact",
+      "source": "专项短练习",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "choices": [
+        "setpos → penup → pendown",
+        "penup → setpos → pendown",
+        "pendown → setpos"
+      ],
+      "explanation": "先抬笔，移动不绘线，到达后落笔。"
+    },
+    {
+      "id": "D01",
+      "title": "先转换再计算",
+      "topic": "input",
+      "kind": "debug",
+      "en": "Read an integer and print twice its value.",
+      "zh": "读取整数，输出其两倍。",
+      "solution": "n=int(input())\nprint(n*2)\n",
+      "cases": [
+        {
+          "inputs": [
+            "3"
+          ],
+          "expected": "6",
+          "label": "3"
+        },
+        {
+          "inputs": [
+            "12"
+          ],
+          "expected": "24",
+          "label": "12"
+        }
+      ],
+      "required": [],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "n=input()\nprint(n*2)\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D02",
+      "title": "小数输入不能直接 int",
+      "topic": "input",
+      "kind": "debug",
+      "en": "Read a decimal price and add 2.5.",
+      "zh": "读入浮点价格，加 2.5，保留两位小数。",
+      "solution": "price=float(input())\nprint(f\"{price+2.5:.2f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "1.2"
+          ],
+          "expected": "3.70",
+          "label": "1.2"
+        }
+      ],
+      "required": [],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "price=int(input())\nprint(f\"{price+2.5:.2f}\")\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D03",
+      "title": "括号里的三数和",
+      "topic": "input",
+      "kind": "debug",
+      "en": "Read three numbers and print 100 minus their sum.",
+      "zh": "读三数，输出 100 减去三数之和。",
+      "solution": "a=float(input())\nb=float(input())\nc=float(input())\nprint(100-(a+b+c))\n",
+      "cases": [
+        {
+          "inputs": [
+            "10",
+            "20",
+            "30"
+          ],
+          "expected": "40.0",
+          "label": "10 / 20 / 30"
+        }
+      ],
+      "required": [],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "a=float(input())\nb=float(input())\nc=float(input())\nprint(100-a+b+c)\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D04",
+      "title": "遗漏 f",
+      "topic": "format",
+      "kind": "debug",
+      "en": "Insert the variable in the sentence.",
+      "zh": "读整数数量，输出 Items: 数量。",
+      "solution": "n=int(input())\nprint(f\"Items: {n}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "4"
+          ],
+          "expected": "Items: 4",
+          "label": "4"
+        }
+      ],
+      "required": [],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "n=int(input())\nprint(\"Items: {n}\")\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D05",
+      "title": "价格小数位",
+      "topic": "format",
+      "kind": "debug",
+      "en": "Print a price with a dollar sign and two decimals.",
+      "zh": "读价格，带 $ 输出两位小数。",
+      "solution": "x=float(input())\nprint(f\"${x:.2f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "3.75"
+          ],
+          "expected": "$3.75",
+          "label": "3.75"
+        },
+        {
+          "inputs": [
+            "5"
+          ],
+          "expected": "$5.00",
+          "label": "5"
+        }
+      ],
+      "required": [],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "x=float(input())\nprint(f\"${x:.0f}\")\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D06",
+      "title": "赋值写进了 if",
+      "topic": "condition",
+      "kind": "debug",
+      "en": "Print yes only for exact input y; otherwise print no.",
+      "zh": "恰好 y 输出 yes，其他输入输出 no。",
+      "solution": "a=input()\nif a == \"y\":\n    print(\"yes\")\nelse:\n    print(\"no\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "y"
+          ],
+          "expected": "yes",
+          "label": "y"
+        },
+        {
+          "inputs": [
+            "n"
+          ],
+          "expected": "no",
+          "label": "n"
+        }
+      ],
+      "required": [],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "a=input()\nif a = \"y\":\n    print(\"yes\")\nelse:\n    print(\"no\")\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D07",
+      "title": "最高档先判断",
+      "topic": "condition",
+      "kind": "debug",
+      "en": "Output 20 for >=1000, 10 for >=500, else 0.",
+      "zh": "输出折扣率整数：≥1000 为 20，≥500 为 10，否则为 0。",
+      "solution": "a=float(input())\nif a>=1000:\n    print(20)\nelif a>=500:\n    print(10)\nelse:\n    print(0)\n",
+      "cases": [
+        {
+          "inputs": [
+            "1000"
+          ],
+          "expected": "20",
+          "label": "1000"
+        },
+        {
+          "inputs": [
+            "500"
+          ],
+          "expected": "10",
+          "label": "500"
+        },
+        {
+          "inputs": [
+            "499.99"
+          ],
+          "expected": "0",
+          "label": "499.99"
+        }
+      ],
+      "required": [
+        "elif"
+      ],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "a=float(input())\nif a>=500:\n    print(10)\nelif a>=1000:\n    print(20)\nelse:\n    print(0)\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D08",
+      "title": "漏掉边界",
+      "topic": "condition",
+      "kind": "debug",
+      "en": "Print eligible for ages >=18, otherwise wait.",
+      "zh": "年龄至少 18 输出 eligible，否则 wait。",
+      "solution": "age=int(input())\nif age>=18:\n    print(\"eligible\")\nelse:\n    print(\"wait\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "18"
+          ],
+          "expected": "eligible",
+          "label": "18"
+        },
+        {
+          "inputs": [
+            "17"
+          ],
+          "expected": "wait",
+          "label": "17"
+        }
+      ],
+      "required": [],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "age=int(input())\nif age>18:\n    print(\"eligible\")\nelse:\n    print(\"wait\")\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D09",
+      "title": "把 print 当 return",
+      "topic": "function",
+      "kind": "debug",
+      "en": "A function must return triple its parameter; print its result.",
+      "zh": "函数返回参数的三倍，顶层打印结果。",
+      "solution": "def triple(n):\n    return n*3\nx=int(input())\nprint(triple(x))\n",
+      "cases": [
+        {
+          "inputs": [
+            "4"
+          ],
+          "expected": "12",
+          "label": "4"
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "numeric_return"
+      ],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "def triple(n):\n    print(n*3)\nx=int(input())\nprint(triple(x))\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D10",
+      "title": "调用时名称还不存在",
+      "topic": "function",
+      "kind": "debug",
+      "en": "Repair execution order without removing either function.",
+      "zh": "保留两个函数，把顶层调用移到名称都已定义之后。",
+      "solution": "def outer():\n    return inner()+1\ndef inner():\n    return 4\nprint(outer())\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": "5",
+          "label": "无输入"
+        }
+      ],
+      "required": [
+        "function",
+        "nested"
+      ],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "def outer():\n    return inner()+1\nprint(outer())\ndef inner():\n    return 4\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D11",
+      "title": "局部结果返回出去",
+      "topic": "function",
+      "kind": "debug",
+      "en": "Return the local total and print it outside the function.",
+      "zh": "在函数内求和，通过 return 把结果传回顶层。",
+      "solution": "def add(a,b):\n    total=a+b\n    return total\nprint(add(2,3))\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": "5",
+          "label": "无输入"
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "numeric_return"
+      ],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "def add(a,b):\n    total=a+b\nadd(2,3)\nprint(total)\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D12",
+      "title": "布尔值不是字符串",
+      "topic": "function",
+      "kind": "debug",
+      "en": "Function returns bool; add only accepted days.",
+      "zh": "函数必须返回 bool；本练习仅接受 Monday，其他输入打印 False。",
+      "solution": "def valid(day):\n    return day==\"Monday\"\nday=input()\nif valid(day):\n    print(True)\nelse:\n    print(False)\n",
+      "cases": [
+        {
+          "inputs": [
+            "x"
+          ],
+          "expected": "False",
+          "label": "x"
+        },
+        {
+          "inputs": [
+            "Monday"
+          ],
+          "expected": "True",
+          "label": "Monday"
+        }
+      ],
+      "required": [
+        "function",
+        "bool"
+      ],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "def valid(day):\n    return \"False\"\nday=input()\nif valid(day):\n    print(True)\nelse:\n    print(False)\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D13",
+      "title": "把列表变成 None",
+      "topic": "list",
+      "kind": "debug",
+      "en": "Sort the list in place and print it.",
+      "zh": "对 [3,1,2] 原地排序并打印列表。",
+      "solution": "a=[3,1,2]\na.sort()\nprint(a)\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": "[1, 2, 3]",
+          "label": "无输入"
+        }
+      ],
+      "required": [
+        "sort"
+      ],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "a=[3,1,2]\na=a.sort()\nprint(a)\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D14",
+      "title": "三个元素不是一个列表",
+      "topic": "list",
+      "kind": "debug",
+      "en": "Use extend to add B and C separately.",
+      "zh": "a=[\"A\"]，用 extend 逐个加入 B、C 后打印。",
+      "solution": "a=[\"A\"]\na.extend([\"B\",\"C\"])\nprint(a)\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": "['A', 'B', 'C']",
+          "label": "无输入"
+        }
+      ],
+      "required": [
+        "extend"
+      ],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "a=[\"A\"]\na.append([\"B\",\"C\"])\nprint(a)\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D15",
+      "title": "索引选错位置",
+      "topic": "list",
+      "kind": "debug",
+      "en": "Delete the second item using del.",
+      "zh": "用 del 删除 [10,20,30] 的第二个元素。",
+      "solution": "a=[10,20,30]\ndel a[1]\nprint(a)\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": "[10, 30]",
+          "label": "无输入"
+        }
+      ],
+      "required": [
+        "del"
+      ],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "a=[10,20,30]\ndel a[2]\nprint(a)\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D16",
+      "title": "去重方向写反",
+      "topic": "list",
+      "kind": "debug",
+      "en": "Read three names and append only new names.",
+      "zh": "读 3 个名字，只 append 尚未出现的，最后打印列表。",
+      "solution": "a=[]\nfor i in range(3):\n    name=input()\n    if name not in a:\n        a.append(name)\nprint(a)\n",
+      "cases": [
+        {
+          "inputs": [
+            "A",
+            "B",
+            "A"
+          ],
+          "expected": "['A', 'B']",
+          "label": "A / B / A"
+        }
+      ],
+      "required": [
+        "append",
+        "for"
+      ],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "a=[]\nfor i in range(3):\n    name=input()\n    if name in a:\n        a.append(name)\nprint(a)\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D17",
+      "title": "倒序少了末项",
+      "topic": "loop",
+      "kind": "debug",
+      "en": "Use for to print 3,2,1 on separate lines.",
+      "zh": "用 for 分行输出 3、2、1。",
+      "solution": "for n in range(3,0,-1):\n    print(n)\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": "3\n2\n1",
+          "label": "无输入"
+        }
+      ],
+      "required": [
+        "for"
+      ],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "for n in range(3,1,-1):\n    print(n)\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D18",
+      "title": "while 变量不更新",
+      "topic": "loop",
+      "kind": "debug",
+      "en": "Use while to print 1,2,3 on separate lines.",
+      "zh": "用 while 输出 1、2、3；修复循环更新。",
+      "solution": "n=1\nwhile n<=3:\n    print(n)\n    n+=1\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": "1\n2\n3",
+          "label": "无输入"
+        }
+      ],
+      "required": [
+        "while"
+      ],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "n=1\nwhile n<=3:\n    print(n)\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D19",
+      "title": "累加器不能每轮清零",
+      "topic": "loop",
+      "kind": "debug",
+      "en": "Read three integers and print their sum using for.",
+      "zh": "用 for 读 3 个整数，最后输出和。",
+      "solution": "total=0\nfor i in range(3):\n    total+=int(input())\nprint(total)\n",
+      "cases": [
+        {
+          "inputs": [
+            "2",
+            "3",
+            "4"
+          ],
+          "expected": "9",
+          "label": "2 / 3 / 4"
+        }
+      ],
+      "required": [
+        "for"
+      ],
+      "validator": "exact",
+      "source": "专项找错练习",
+      "starter": "for i in range(3):\n    total=0\n    total+=int(input())\nprint(total)\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "D20",
+      "title": "外角与内角混淆",
+      "topic": "turtle",
+      "kind": "debug",
+      "en": "Draw one filled square, side length 45, at a chosen pen-up position.",
+      "zh": "画一个填充正方形，边长 45，抬笔 setpos 定位；设置两种颜色。",
+      "solution": "import turtle as t\nt.pencolor(\"green\")\nt.fillcolor(\"cyan\")\nt.penup()\nt.setpos(0,0)\nt.pendown()\nt.begin_fill()\nfor i in range(4):\n    t.forward(45)\n    t.left(360/4)\nt.end_fill()\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": null,
+          "label": "无输入",
+          "ns": [
+            4
+          ]
+        }
+      ],
+      "required": [
+        "for"
+      ],
+      "validator": "polygons",
+      "source": "专项找错练习",
+      "starter": "import turtle as t\nt.pencolor(\"green\")\nt.fillcolor(\"cyan\")\nt.penup()\nt.setpos(0,0)\nt.pendown()\nt.begin_fill()\nfor i in range(4):\n    t.forward(45)\n    t.left(180/4)\nt.end_fill()\n",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P01",
+      "title": "剩余预算",
+      "topic": "input",
+      "kind": "program",
+      "en": "Read budget and expense as floats; print their difference to 2 decimals.",
+      "zh": "读预算、支出两个浮点数；输出余额，两位小数。",
+      "solution": "budget=float(input())\nexpense=float(input())\nprint(f\"{budget-expense:.2f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "100",
+            "21.25"
+          ],
+          "expected": "78.75",
+          "label": "100 / 21.25"
+        },
+        {
+          "inputs": [
+            "12",
+            "13"
+          ],
+          "expected": "-1.00",
+          "label": "12 / 13"
+        }
+      ],
+      "required": [],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P02",
+      "title": "整数商和余数",
+      "topic": "input",
+      "kind": "program",
+      "en": "Read a nonnegative integer; pack items into boxes of 6. Print full boxes and leftovers separated by one space.",
+      "zh": "输入非负整数数量，每盒 6 个。输出完整盒数与剩余数，中间一个空格。",
+      "solution": "n=int(input())\nprint(n//6,n%6)\n",
+      "cases": [
+        {
+          "inputs": [
+            "14"
+          ],
+          "expected": "2 2",
+          "label": "14"
+        },
+        {
+          "inputs": [
+            "12"
+          ],
+          "expected": "2 0",
+          "label": "12"
+        }
+      ],
+      "required": [],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P03",
+      "title": "折扣率转百分数",
+      "topic": "format",
+      "kind": "program",
+      "en": "Read a rate such as 0.125 and print it as a percentage to one decimal.",
+      "zh": "输入小数形式的折扣率，如 0.125，输出 12.5%。",
+      "solution": "rate=float(input())\nprint(f\"{rate*100:.1f}%\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "0.125"
+          ],
+          "expected": "12.5%",
+          "label": "0.125"
+        },
+        {
+          "inputs": [
+            "0.2"
+          ],
+          "expected": "20.0%",
+          "label": "0.2"
+        }
+      ],
+      "required": [],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P04",
+      "title": "简洁收据",
+      "topic": "format",
+      "kind": "program",
+      "en": "Read unit price and integer quantity. Print Price Qty Total then a row like $2.50 3 $7.50.",
+      "zh": "读单价、整数数量。第一行 Price Qty Total；第二行带 $ 的单价、数量和总价，金额两位小数，用一个空格分列。",
+      "solution": "p=float(input())\nn=int(input())\nprint(\"Price Qty Total\")\nprint(f\"${p:.2f} {n} ${p*n:.2f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "2.5",
+            "3"
+          ],
+          "expected": "Price Qty Total\n$2.50 3 $7.50",
+          "label": "2.5 / 3"
+        }
+      ],
+      "required": [],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P05",
+      "title": "半开温度区间",
+      "topic": "condition",
+      "kind": "program",
+      "en": "Print safe only when 18 <= temperature < 25; otherwise alert.",
+      "zh": "温度满足 18≤t<25 时 safe，否则 alert。",
+      "solution": "t=float(input())\nif 18<=t<25:\n    print(\"safe\")\nelse:\n    print(\"alert\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "18"
+          ],
+          "expected": "safe",
+          "label": "18"
+        },
+        {
+          "inputs": [
+            "24.99"
+          ],
+          "expected": "safe",
+          "label": "24.99"
+        },
+        {
+          "inputs": [
+            "25"
+          ],
+          "expected": "alert",
+          "label": "25"
+        },
+        {
+          "inputs": [
+            "17.99"
+          ],
+          "expected": "alert",
+          "label": "17.99"
+        }
+      ],
+      "required": [],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P06",
+      "title": "分类字符串",
+      "topic": "condition",
+      "kind": "program",
+      "en": "Read a category. adult costs 12, student costs 8; anything else prints invalid. Case-sensitive.",
+      "zh": "读类别，adult 输出 12，student 输出 8，其他输出 invalid。区分大小写。",
+      "solution": "category=input()\nif category==\"adult\":\n    print(12)\nelif category==\"student\":\n    print(8)\nelse:\n    print(\"invalid\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "adult"
+          ],
+          "expected": "12",
+          "label": "adult"
+        },
+        {
+          "inputs": [
+            "student"
+          ],
+          "expected": "8",
+          "label": "student"
+        },
+        {
+          "inputs": [
+            "Adult"
+          ],
+          "expected": "invalid",
+          "label": "Adult"
+        }
+      ],
+      "required": [
+        "elif"
+      ],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P07",
+      "title": "函数返回价格",
+      "topic": "function",
+      "kind": "program",
+      "en": "Write a function with a quantity parameter returning quantity * 7.5. Read quantity and print 2 decimals.",
+      "zh": "带数量形参的函数返回数量×7.5；读整数数量，顶层输出两位小数。",
+      "solution": "def cost(n):\n    return n*7.5\nn=int(input())\nprint(f\"{cost(n):.2f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "3"
+          ],
+          "expected": "22.50",
+          "label": "3"
+        },
+        {
+          "inputs": [
+            "0"
+          ],
+          "expected": "0.00",
+          "label": "0"
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "numeric_return"
+      ],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P08",
+      "title": "区间判断返回 bool",
+      "topic": "function",
+      "kind": "program",
+      "en": "Write a function returning True only for 0 <= score <= 100. Read a score and print the bool.",
+      "zh": "函数接收成绩，仅 0≤成绩≤100 返回 True，否则 False。读成绩并打印布尔结果。",
+      "solution": "def valid(score):\n    return 0<=score<=100\nprint(valid(float(input())))\n",
+      "cases": [
+        {
+          "inputs": [
+            "0"
+          ],
+          "expected": "True",
+          "label": "0"
+        },
+        {
+          "inputs": [
+            "100"
+          ],
+          "expected": "True",
+          "label": "100"
+        },
+        {
+          "inputs": [
+            "-1"
+          ],
+          "expected": "False",
+          "label": "-1"
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "bool"
+      ],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P09",
+      "title": "复用计算函数",
+      "topic": "function",
+      "kind": "program",
+      "en": "Use one function returning 4.5 and another calling it to compute total hours for an input number of sessions. Print 1 decimal.",
+      "zh": "一个函数返回每次 4.5 小时，另一个带次数参数并调用它计算总小时。读次数，输出一位小数。",
+      "solution": "def one():\n    return 4.5\ndef total(n):\n    return one()*n\nprint(f\"{total(int(input())):.1f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "3"
+          ],
+          "expected": "13.5",
+          "label": "3"
+        }
+      ],
+      "required": [
+        "function",
+        "nested",
+        "parameter",
+        "numeric_return"
+      ],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P10",
+      "title": "列表索引与长度",
+      "topic": "list",
+      "kind": "program",
+      "en": "Create [4,8,12,16]. Print its first item, last item and length, separated by spaces.",
+      "zh": "创建 [4,8,12,16]，输出首项、末项、长度，用空格分隔。",
+      "solution": "a=[4,8,12,16]\nprint(a[0],a[len(a)-1],len(a))\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": "4 16 4",
+          "label": "无输入"
+        }
+      ],
+      "required": [],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P11",
+      "title": "先扩展再排序",
+      "topic": "list",
+      "kind": "program",
+      "en": "Create [8,2], extend it with [5,1], sort in place, print it.",
+      "zh": "创建 [8,2]，extend 加入 [5,1]，sort 原地排序并打印。",
+      "solution": "a=[8,2]\na.extend([5,1])\na.sort()\nprint(a)\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": "[1, 2, 5, 8]",
+          "label": "无输入"
+        }
+      ],
+      "required": [
+        "extend",
+        "sort"
+      ],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P12",
+      "title": "删除最后一项",
+      "topic": "list",
+      "kind": "program",
+      "en": "Read three names into a list using append, use del to remove the last one, print the list.",
+      "zh": "使用 append 读入三个名字到列表，再用 del 删除最后一项并打印。",
+      "solution": "a=[]\nfor i in range(3):\n    a.append(input())\ndel a[2]\nprint(a)\n",
+      "cases": [
+        {
+          "inputs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "expected": "['A', 'B']",
+          "label": "A / B / C"
+        }
+      ],
+      "required": [
+        "append",
+        "del",
+        "for"
+      ],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P13",
+      "title": "步长筛选",
+      "topic": "loop",
+      "kind": "program",
+      "en": "Use for and range to print the positive multiples of 3 below 13, one per line.",
+      "zh": "用 for 和 range 输出小于 13 的正数 3 的倍数，每行一个。",
+      "solution": "for n in range(3,13,3):\n    print(n)\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": "3\n6\n9\n12",
+          "label": "无输入"
+        }
+      ],
+      "required": [
+        "for"
+      ],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P14",
+      "title": "求和循环",
+      "topic": "loop",
+      "kind": "program",
+      "en": "Read a positive integer n and use for to sum 1 through n; print the sum.",
+      "zh": "读正整数 n，用 for 计算 1 到 n 的总和并输出。",
+      "solution": "n=int(input())\ntotal=0\nfor value in range(1,n+1):\n    total+=value\nprint(total)\n",
+      "cases": [
+        {
+          "inputs": [
+            "1"
+          ],
+          "expected": "1",
+          "label": "1"
+        },
+        {
+          "inputs": [
+            "5"
+          ],
+          "expected": "15",
+          "label": "5"
+        }
+      ],
+      "required": [
+        "for"
+      ],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P15",
+      "title": "while 累乘",
+      "topic": "loop",
+      "kind": "program",
+      "en": "Read a positive integer n and use while to compute 1*2*...*n; print the result.",
+      "zh": "读正整数 n，用 while 求 1×2×…×n 并打印。",
+      "solution": "n=int(input())\nvalue=1\nproduct=1\nwhile value<=n:\n    product*=value\n    value+=1\nprint(product)\n",
+      "cases": [
+        {
+          "inputs": [
+            "1"
+          ],
+          "expected": "1",
+          "label": "1"
+        },
+        {
+          "inputs": [
+            "4"
+          ],
+          "expected": "24",
+          "label": "4"
+        }
+      ],
+      "required": [
+        "while"
+      ],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P16",
+      "title": "计数不累加",
+      "topic": "loop",
+      "kind": "program",
+      "en": "Read five integers and use for to count values >=10. Print the count.",
+      "zh": "用 for 读五个整数，计数其中 ≥10 的数量，最后打印计数。",
+      "solution": "count=0\nfor i in range(5):\n    n=int(input())\n    if n>=10:\n        count+=1\nprint(count)\n",
+      "cases": [
+        {
+          "inputs": [
+            "9",
+            "10",
+            "11",
+            "0",
+            "20"
+          ],
+          "expected": "3",
+          "label": "9 / 10 / 11 / 0 / 20"
+        }
+      ],
+      "required": [
+        "for"
+      ],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P17",
+      "title": "参数化五边形",
+      "topic": "turtle",
+      "kind": "program",
+      "en": "Use a parameterized function to draw one filled pentagon, side 180/n, angle 360/n, after pen-up setpos. Set colors.",
+      "zh": "写带边数参数的函数，画一个填充五边形，边长 180/n、转角 360/n，抬笔 setpos 定位并设置颜色。",
+      "solution": "import turtle as t\n\ndef polygon(n):\n    t.begin_fill()\n    for side in range(n):\n        t.forward(180 / n)\n        t.left(360 / n)\n    t.end_fill()\n\nt.pencolor(\"#285e54\")\nt.fillcolor(\"#b6efde\")\nfor n in [5]:\n    t.penup()\n    t.setpos(((n-3) % 5) * 120 - 260, ((n-3) // 5) * 140 - 100)\n    t.pendown()\n    polygon(n)\nt.done()\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": null,
+          "label": "无输入",
+          "ns": [
+            5
+          ]
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "for"
+      ],
+      "validator": "polygons",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P18",
+      "title": "顺时针三角形",
+      "topic": "turtle",
+      "kind": "program",
+      "en": "Use right turns to draw one filled triangle of side 60, at a pen-up position. Set line/fill colors.",
+      "zh": "使用 right 画一个填充三角形，边长 60，抬笔 setpos 定位，设置线条和填充颜色。",
+      "solution": "import turtle as t\n\ndef polygon(n):\n    t.begin_fill()\n    for side in range(n):\n        t.forward(180 / n)\n        t.right(360 / n)\n    t.end_fill()\n\nt.pencolor(\"#285e54\")\nt.fillcolor(\"#b6efde\")\nfor n in [3]:\n    t.penup()\n    t.setpos(((n-3) % 5) * 120 - 260, ((n-3) // 5) * 140 - 100)\n    t.pendown()\n    polygon(n)\nt.done()\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": null,
+          "label": "无输入",
+          "ns": [
+            3
+          ]
+        }
+      ],
+      "required": [
+        "for"
+      ],
+      "validator": "polygons",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P19",
+      "title": "反向前进",
+      "topic": "turtle",
+      "kind": "program",
+      "en": "Use backward and left to draw one filled square of side 45 after a pen-up setpos. Set colors.",
+      "zh": "使用 backward 和 left 画一个填充正方形，边长 45，抬笔 setpos 定位并设置颜色。",
+      "solution": "import turtle as t\n\ndef polygon(n):\n    t.begin_fill()\n    for side in range(n):\n        t.backward(180 / n)\n        t.left(360 / n)\n    t.end_fill()\n\nt.pencolor(\"#285e54\")\nt.fillcolor(\"#b6efde\")\nfor n in [4]:\n    t.penup()\n    t.setpos(((n-3) % 5) * 120 - 260, ((n-3) // 5) * 140 - 100)\n    t.pendown()\n    polygon(n)\nt.done()\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": null,
+          "label": "无输入",
+          "ns": [
+            4
+          ]
+        }
+      ],
+      "required": [
+        "for"
+      ],
+      "validator": "polygons",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "P20",
+      "title": "去重计数函数",
+      "topic": "list",
+      "kind": "program",
+      "en": "Function reads three names, appends only new names, returns the count. Print count.",
+      "zh": "函数读三个名字，只 append 新名字，返回去重数量；顶层打印返回值。",
+      "solution": "def count_names():\n    seen=[]\n    for i in range(3):\n        name=input()\n        if name not in seen:\n            seen.append(name)\n    return len(seen)\nprint(count_names())\n",
+      "cases": [
+        {
+          "inputs": [
+            "A",
+            "A",
+            "B"
+          ],
+          "expected": "2",
+          "label": "A / A / B"
+        },
+        {
+          "inputs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "expected": "3",
+          "label": "A / B / C"
+        }
+      ],
+      "required": [
+        "function",
+        "append",
+        "for",
+        "numeric_return"
+      ],
+      "validator": "exact",
+      "source": "单知识点独立编程",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ]
+    },
+    {
+      "id": "T011",
+      "title": "会员优惠封装成函数",
+      "topic": "function",
+      "kind": "transfer",
+      "en": "Read integer quantity and membership (member/guest). Function returns cost at $22.50 each with 10% off for member only. Print two decimals, no dollar sign.",
+      "zh": "数量与身份 member/guest 决定优惠。把计算放入带参数、返回数值的函数；每件 22.50，member 优惠 10%；只输出两位小数，不带 $。",
+      "solution": "def cost(n, status):\n    total=n*22.5\n    if status==\"member\":\n        return total*0.9\n    return total\nn=int(input())\nstatus=input()\nprint(f\"{cost(n,status):.2f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "2",
+            "member"
+          ],
+          "expected": "40.50",
+          "label": "2 / member"
+        },
+        {
+          "inputs": [
+            "2",
+            "guest"
+          ],
+          "expected": "45.00",
+          "label": "2 / guest"
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "numeric_return"
+      ],
+      "validator": "exact",
+      "source": "第 1 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 1
+    },
+    {
+      "id": "T012",
+      "title": "双条件资格与节省额",
+      "topic": "condition",
+      "kind": "transfer",
+      "en": "Read quantity and company. A 10% discount needs exact The Lab Depot AND quantity >=3. Print saving then total, two decimals separated by one space.",
+      "zh": "同时满足公司名恰好为 The Lab Depot 且数量 ≥3 才优惠 10%。按顺序输出节省额、折后额，两位小数、一个空格。每件 22.50。",
+      "solution": "n=int(input())\nname=input()\noriginal=n*22.5\nif name==\"The Lab Depot\" and n>=3:\n    saving=original*0.1\nelse:\n    saving=0\nprint(f\"{saving:.2f} {original-saving:.2f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "2",
+            "The Lab Depot"
+          ],
+          "expected": "0.00 45.00",
+          "label": "2 / The Lab Depot"
+        },
+        {
+          "inputs": [
+            "3",
+            "The Lab Depot"
+          ],
+          "expected": "6.75 60.75",
+          "label": "3 / The Lab Depot"
+        },
+        {
+          "inputs": [
+            "4",
+            "Other"
+          ],
+          "expected": "0.00 90.00",
+          "label": "4 / Other"
+        }
+      ],
+      "required": [],
+      "validator": "exact",
+      "source": "第 1 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 1
+    },
+    {
+      "id": "T021",
+      "title": "次数固定的批量订单",
+      "topic": "loop",
+      "kind": "transfer",
+      "en": "Process exactly three quantities using for. Same $20 and 1–5/6+ discounts as homework. Print each total to 2 decimals, then the sum on a final line.",
+      "zh": "用 for 连续处理 3 个订单数量。单价与原数量折扣相同，每个订单输出两位小数折后额，末行输出三个订单总和；不输出百分号。",
+      "solution": "grand=0\nfor i in range(3):\n    n=int(input())\n    rate=n+4 if n<=5 else 10\n    total=n*20*(1-rate/100)\n    grand+=total\n    print(f\"{total:.2f}\")\nprint(f\"{grand:.2f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "1",
+            "5",
+            "6"
+          ],
+          "expected": "19.00\n91.00\n108.00\n218.00",
+          "label": "1 / 5 / 6"
+        }
+      ],
+      "required": [
+        "for"
+      ],
+      "validator": "exact",
+      "source": "第 2 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 2
+    },
+    {
+      "id": "T022",
+      "title": "固定立减与百分比选择",
+      "topic": "function",
+      "kind": "transfer",
+      "en": "Function accepts quantity and offer. Each item is $20. flat subtracts $5 from the whole order; percent takes 10% off. Unknown offer returns original total. Read quantity and offer; print 2 decimals.",
+      "zh": "函数按 offer 选择不同优惠：flat 总价立减 5；percent 总价打九折；其他保持原价。单价 20，读数量与 offer，打印两位小数。输入数量为正整数。",
+      "solution": "def bill(n,offer):\n    total=n*20\n    if offer==\"flat\":\n        return total-5\n    if offer==\"percent\":\n        return total*0.9\n    return total\nn=int(input())\noffer=input()\nprint(f\"{bill(n,offer):.2f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "1",
+            "flat"
+          ],
+          "expected": "15.00",
+          "label": "1 / flat"
+        },
+        {
+          "inputs": [
+            "5",
+            "percent"
+          ],
+          "expected": "90.00",
+          "label": "5 / percent"
+        },
+        {
+          "inputs": [
+            "6",
+            "none"
+          ],
+          "expected": "120.00",
+          "label": "6 / none"
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "numeric_return"
+      ],
+      "validator": "exact",
+      "source": "第 2 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 2
+    },
+    {
+      "id": "T031",
+      "title": "剩余预算的收集循环",
+      "topic": "loop",
+      "kind": "transfer",
+      "en": "Read y/n. n prints Bye Bye. y reads a budget then exactly four expenses using while; print the remaining budget to 2 decimals.",
+      "zh": "y 时读预算，再用 while 恰好读 4 笔支出，输出余额两位小数；n 只输出 Bye Bye，不读其他值。",
+      "solution": "begin=input()\nif begin==\"n\":\n    print(\"Bye Bye\")\nelse:\n    budget=float(input())\n    total=0\n    count=0\n    while count<4:\n        total+=float(input())\n        count+=1\n    print(f\"{budget-total:.2f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "n"
+          ],
+          "expected": "Bye Bye",
+          "label": "n"
+        },
+        {
+          "inputs": [
+            "y",
+            "80",
+            "10",
+            "12.5",
+            "5",
+            "2.5"
+          ],
+          "expected": "50.00",
+          "label": "y / 80 / 10 / 12.5 / 5 / 2.5"
+        }
+      ],
+      "required": [
+        "while"
+      ],
+      "validator": "exact",
+      "source": "第 3 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 3
+    },
+    {
+      "id": "T032",
+      "title": "只在正确口令后调用",
+      "topic": "function",
+      "kind": "transfer",
+      "en": "Read run/stop. stop prints Stopped. run calls a function that reads 3 decimal scores and returns their mean. Print the mean to 1 decimal.",
+      "zh": "读 run/stop。stop 输出 Stopped；run 调用函数读入三项浮点成绩并返回平均值，顶层打印一位小数。",
+      "solution": "def mean():\n    a=float(input())\n    b=float(input())\n    c=float(input())\n    return (a+b+c)/3\nchoice=input()\nif choice==\"run\":\n    print(f\"{mean():.1f}\")\nelse:\n    print(\"Stopped\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "stop"
+          ],
+          "expected": "Stopped",
+          "label": "stop"
+        },
+        {
+          "inputs": [
+            "run",
+            "70",
+            "80",
+            "90"
+          ],
+          "expected": "80.0",
+          "label": "run / 70 / 80 / 90"
+        }
+      ],
+      "required": [
+        "function",
+        "numeric_return"
+      ],
+      "validator": "exact",
+      "source": "第 3 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 3
+    },
+    {
+      "id": "T041",
+      "title": "边界随参数传入",
+      "topic": "function",
+      "kind": "transfer",
+      "en": "Function accepts purchase amount and threshold. Below threshold rate is 0; at threshold or above rate is 15%. Return saving. Read amount then threshold; print saving and remaining cost to 2 decimals.",
+      "zh": "函数接收金额与门槛参数。低于门槛不优惠，达到门槛优惠 15%，函数返回节省额。读金额、门槛，输出节省额和折后额，两位小数、一个空格。",
+      "solution": "def saving(amount,threshold):\n    if amount>=threshold:\n        return amount*0.15\n    return 0\namount=float(input())\nthreshold=float(input())\ns=saving(amount,threshold)\nprint(f\"{s:.2f} {amount-s:.2f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "299.99",
+            "300"
+          ],
+          "expected": "0.00 299.99",
+          "label": "299.99 / 300"
+        },
+        {
+          "inputs": [
+            "300",
+            "300"
+          ],
+          "expected": "45.00 255.00",
+          "label": "300 / 300"
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "numeric_return"
+      ],
+      "validator": "exact",
+      "source": "第 4 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 4
+    },
+    {
+      "id": "T042",
+      "title": "由低至高的 elif 区间",
+      "topic": "condition",
+      "kind": "transfer",
+      "en": "Use if/elif starting with low ranges: score <50 -> retry, <80 -> pass, otherwise distinction. Read a score and print the word.",
+      "zh": "用从低到高的 if / elif：分数 <50 为 retry，<80 为 pass，否则 distinction。读成绩并输出相应词。",
+      "solution": "score=float(input())\nif score<50:\n    print(\"retry\")\nelif score<80:\n    print(\"pass\")\nelse:\n    print(\"distinction\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "49.99"
+          ],
+          "expected": "retry",
+          "label": "49.99"
+        },
+        {
+          "inputs": [
+            "50"
+          ],
+          "expected": "pass",
+          "label": "50"
+        },
+        {
+          "inputs": [
+            "79.99"
+          ],
+          "expected": "pass",
+          "label": "79.99"
+        },
+        {
+          "inputs": [
+            "80"
+          ],
+          "expected": "distinction",
+          "label": "80"
+        }
+      ],
+      "required": [
+        "elif"
+      ],
+      "validator": "exact",
+      "source": "第 4 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 4
+    },
+    {
+      "id": "T051",
+      "title": "函数顺序交换仍可用",
+      "topic": "function",
+      "kind": "transfer",
+      "en": "Define total before per_class. per_class takes tutorial and lecture counts, using 1.5 and 1 hour each. total calls per_class and multiplies by class count. Read three integer counts; print 1 decimal.",
+      "zh": "先定义 total，再定义 per_class；前者调用后者。per_class 接收辅导和讲座次数，用 1.5 和 1 小时计算；total 再乘课程数。按顺序读三项：辅导次数、讲座次数、课程数；输出一位小数。",
+      "solution": "def total(tutorials,lectures,classes):\n    return per_class(tutorials,lectures)*classes\ndef per_class(tutorials,lectures):\n    return tutorials*1.5+lectures\nn=int(input())\nm=int(input())\nc=int(input())\nprint(f\"{total(n,m,c):.1f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "3",
+            "2",
+            "4"
+          ],
+          "expected": "26.0",
+          "label": "3 / 2 / 4"
+        }
+      ],
+      "required": [
+        "function",
+        "nested",
+        "parameter",
+        "numeric_return"
+      ],
+      "validator": "exact",
+      "source": "第 5 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 5
+    },
+    {
+      "id": "T052",
+      "title": "函数加循环累计课程",
+      "topic": "function",
+      "kind": "transfer",
+      "en": "hours(t,l) returns 1.5*t+l. A second function calls hours for exactly two courses using for and returns their sum. Read tutorial then lecture counts for each course; print .0f.",
+      "zh": "hours(t,l) 返回 1.5*t+l；第二个函数用 for 处理两门课并调用 hours，返回总和。每门按顺序输入辅导、讲座次数；顶层用 :.0f 输出。",
+      "solution": "def hours(t,l):\n    return 1.5*t+l\ndef combined():\n    total=0\n    for course in range(2):\n        t=int(input())\n        l=int(input())\n        total+=hours(t,l)\n    return total\nprint(f\"{combined():.0f}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "1",
+            "1",
+            "2",
+            "2"
+          ],
+          "expected": "8",
+          "label": "1 / 1 / 2 / 2"
+        },
+        {
+          "inputs": [
+            "3",
+            "2",
+            "4",
+            "1"
+          ],
+          "expected": "14",
+          "label": "3 / 2 / 4 / 1"
+        }
+      ],
+      "required": [
+        "function",
+        "nested",
+        "for",
+        "numeric_return"
+      ],
+      "validator": "exact",
+      "source": "第 5 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 5
+    },
+    {
+      "id": "T061",
+      "title": "显式短单位转换",
+      "topic": "function",
+      "kind": "transfer",
+      "en": "Use functions to convert cm to m (divide by 100) and m to cm (multiply by 100). Read value and exact cm/m; print value to 2 decimals then target unit. Other units print invalid.",
+      "zh": "用函数处理 cm↔m，读数值和严格小写单位 cm/m。输出两位小数和目标单位，中间一个空格；其他单位 invalid，不自动转换大小写。",
+      "solution": "def to_m(x): return x/100\ndef to_cm(x): return x*100\nx=float(input())\nunit=input()\nif unit==\"cm\":\n    print(f\"{to_m(x):.2f} m\")\nelif unit==\"m\":\n    print(f\"{to_cm(x):.2f} cm\")\nelse:\n    print(\"invalid\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "150",
+            "cm"
+          ],
+          "expected": "1.50 m",
+          "label": "150 / cm"
+        },
+        {
+          "inputs": [
+            "2",
+            "m"
+          ],
+          "expected": "200.00 cm",
+          "label": "2 / m"
+        },
+        {
+          "inputs": [
+            "2",
+            "CM"
+          ],
+          "expected": "invalid",
+          "label": "2 / CM"
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "numeric_return"
+      ],
+      "validator": "exact",
+      "source": "第 6 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 6
+    },
+    {
+      "id": "T062",
+      "title": "转换方向由数值菜单选择",
+      "topic": "function",
+      "kind": "transfer",
+      "en": "Read menu choice first: 1 means miles to kilometers, 2 means reverse. Only for valid choices read distance. Use two functions and print converted value to 3 decimals. Other choices print invalid.",
+      "zh": "先输入菜单 1/2。1 英里转千米，2 反向；只有选择有效才继续读距离。使用两个转换函数和系数 1.60934，输出三位小数。其他菜单输入输出 invalid。",
+      "solution": "def km(x): return x*1.60934\ndef miles(x): return x/1.60934\nchoice=input()\nif choice==\"1\":\n    x=float(input())\n    print(f\"{km(x):.3f}\")\nelif choice==\"2\":\n    x=float(input())\n    print(f\"{miles(x):.3f}\")\nelse:\n    print(\"invalid\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "1",
+            "1"
+          ],
+          "expected": "1.609",
+          "label": "1 / 1"
+        },
+        {
+          "inputs": [
+            "2",
+            "1.60934"
+          ],
+          "expected": "1.000",
+          "label": "2 / 1.60934"
+        },
+        {
+          "inputs": [
+            "3"
+          ],
+          "expected": "invalid",
+          "label": "3"
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "numeric_return"
+      ],
+      "validator": "exact",
+      "source": "第 6 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 6
+    },
+    {
+      "id": "T071",
+      "title": "先删再扩展的名单",
+      "topic": "list",
+      "kind": "transfer",
+      "en": "Create [Zoe,Ada,Max]. Delete the first name, extend with [Ben,Lia], sort in place, print list and length on separate lines.",
+      "zh": "创建 [\"Zoe\",\"Ada\",\"Max\"]；先 del 删除首项，再 extend 加入 Ben、Lia，sort 排序；分两行输出列表、长度。操作顺序与原题不同。",
+      "solution": "a=[\"Zoe\",\"Ada\",\"Max\"]\ndel a[0]\na.extend([\"Ben\",\"Lia\"])\na.sort()\nprint(a)\nprint(len(a))\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": "['Ada', 'Ben', 'Lia', 'Max']\n4",
+          "label": "无输入"
+        }
+      ],
+      "required": [
+        "del",
+        "extend",
+        "sort"
+      ],
+      "validator": "exact",
+      "source": "第 7 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 7
+    },
+    {
+      "id": "T072",
+      "title": "循环收集不重复电影",
+      "topic": "list",
+      "kind": "transfer",
+      "en": "Read four movie names, append only new names, sort them in place. If more than two remain, delete the last item using del. Print the list.",
+      "zh": "读 4 个电影名，只 append 新名字，sort 原地排序。如果数量 >2，用 del 删最后一项。打印列表；含重复输入。",
+      "solution": "movies=[]\nfor i in range(4):\n    title=input()\n    if title not in movies:\n        movies.append(title)\nmovies.sort()\nif len(movies)>2:\n    del movies[len(movies)-1]\nprint(movies)\n",
+      "cases": [
+        {
+          "inputs": [
+            "Z",
+            "A",
+            "Z",
+            "M"
+          ],
+          "expected": "['A', 'M']",
+          "label": "Z / A / Z / M"
+        },
+        {
+          "inputs": [
+            "D",
+            "C",
+            "B",
+            "A"
+          ],
+          "expected": "['A', 'B', 'C']",
+          "label": "D / C / B / A"
+        }
+      ],
+      "required": [
+        "append",
+        "sort",
+        "del",
+        "for"
+      ],
+      "validator": "exact",
+      "source": "第 7 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 7
+    },
+    {
+      "id": "T081",
+      "title": "达到成功数才结束的拓展",
+      "topic": "loop",
+      "kind": "transfer",
+      "en": "Explicit extension: ask until 3 unique valid colors red/green/blue are accepted. Use while and a bool function. Duplicates/invalid entries do not increase success count. Print accepted list and total attempts.",
+      "zh": "额外拓展：直到收集到 3 个不重复有效颜色 red/green/blue 才结束，区别于原题固定 7 次。用 while 和 bool 函数；打印有效颜色列表，再打印总尝试次数，各占一行。",
+      "solution": "def valid(color,seen):\n    return color in [\"red\",\"green\",\"blue\"] and color not in seen\nseen=[]\nattempts=0\nwhile len(seen)<3:\n    color=input()\n    attempts+=1\n    if valid(color,seen):\n        seen.append(color)\nprint(seen)\nprint(attempts)\n",
+      "cases": [
+        {
+          "inputs": [
+            "red",
+            "red",
+            "pink",
+            "green",
+            "blue"
+          ],
+          "expected": "['red', 'green', 'blue']\n5",
+          "label": "red / red / pink / green / blue"
+        }
+      ],
+      "required": [
+        "function",
+        "bool",
+        "parameter",
+        "while",
+        "append"
+      ],
+      "validator": "exact",
+      "source": "第 8 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 8
+    },
+    {
+      "id": "T082",
+      "title": "按失败原因分别计数",
+      "topic": "list",
+      "kind": "transfer",
+      "en": "Make exactly five attempts for unique valid codes A/B/C, case-sensitive. Bool function validates a code. Print accepted count, duplicate count, invalid count separated by spaces.",
+      "zh": "恰好 5 次输入有效代码 A/B/C，区分大小写。bool 函数验证有效且未重复。分别计数成功、重复、无效，最后按该顺序输出三个整数，用空格分隔。",
+      "solution": "def valid(value,seen):\n    return value in [\"A\",\"B\",\"C\"] and value not in seen\nseen=[]\nduplicate=0\ninvalid=0\nfor i in range(5):\n    value=input()\n    if valid(value,seen):\n        seen.append(value)\n    elif value in seen:\n        duplicate+=1\n    else:\n        invalid+=1\nprint(len(seen),duplicate,invalid)\n",
+      "cases": [
+        {
+          "inputs": [
+            "A",
+            "A",
+            "x",
+            "B",
+            "a"
+          ],
+          "expected": "2 1 2",
+          "label": "A / A / x / B / a"
+        },
+        {
+          "inputs": [
+            "A",
+            "B",
+            "C",
+            "C",
+            "B"
+          ],
+          "expected": "3 2 0",
+          "label": "A / B / C / C / B"
+        }
+      ],
+      "required": [
+        "function",
+        "bool",
+        "for",
+        "append"
+      ],
+      "validator": "exact",
+      "source": "第 8 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 8
+    },
+    {
+      "id": "T091",
+      "title": "只画偶数边形",
+      "topic": "turtle",
+      "kind": "transfer",
+      "en": "Use a parameterized polygon function, side 180/n, angle 360/n. Use range with step 2 to draw 4,6,8,10,12 sides, clockwise, separated with pen-up setpos and colors.",
+      "zh": "带参数的多边形函数，边长 180/n，转角 360/n。range 步长 2，顺时针画 4、6、8、10、12 边形；抬笔 setpos 分离，设置颜色与填充。",
+      "solution": "import turtle as t\n\ndef polygon(n):\n    t.begin_fill()\n    for side in range(n):\n        t.forward(180 / n)\n        t.right(360 / n)\n    t.end_fill()\n\nt.pencolor(\"#285e54\")\nt.fillcolor(\"#b6efde\")\nfor n in range(4, 13, 2):\n    t.penup()\n    t.setpos((n-4)*70-280, 0)\n    t.pendown()\n    polygon(n)\nt.done()\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": null,
+          "label": "无输入",
+          "ns": [
+            4,
+            6,
+            8,
+            10,
+            12
+          ]
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "for"
+      ],
+      "validator": "polygons",
+      "source": "第 9 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 9
+    },
+    {
+      "id": "T092",
+      "title": "用户选择图形，while 重复布局",
+      "topic": "turtle",
+      "kind": "transfer",
+      "en": "Read a side count n (3..8). A parameterized polygon function uses side 180/n and angle 360/n. Use while to draw three copies on different positions. Set colors, fill, pen-up movement.",
+      "zh": "读边数 n（输入限定 3～8）。带参数函数用 180/n 与 360/n；用 while 在不同位置画 3 个副本。设置线条与填充颜色，移动时抬笔。",
+      "solution": "import turtle as t\ndef polygon(n):\n    t.begin_fill()\n    for i in range(n):\n        t.forward(180/n)\n        t.left(360/n)\n    t.end_fill()\nn=int(input())\nt.pencolor(\"navy\")\nt.fillcolor(\"lightblue\")\ni=0\nwhile i<3:\n    t.penup()\n    t.setpos(i*140-180,0)\n    t.pendown()\n    polygon(n)\n    i+=1\n",
+      "cases": [
+        {
+          "inputs": [
+            "3"
+          ],
+          "expected": null,
+          "label": "3",
+          "ns": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "inputs": [
+            "8"
+          ],
+          "expected": null,
+          "label": "8",
+          "ns": [
+            8,
+            8,
+            8
+          ]
+        }
+      ],
+      "required": [
+        "function",
+        "parameter",
+        "while"
+      ],
+      "validator": "polygons",
+      "source": "第 9 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 9
+    },
+    {
+      "id": "T101",
+      "title": "用户输入乘数与上下限",
+      "topic": "loop",
+      "kind": "transfer",
+      "en": "Read multiplier, high and low (high >= low). Use for to print a descending table, inclusive, in the form 5 x 4 = 20.",
+      "zh": "按顺序读乘数、上界、下界（上界≥下界）。用 for 输出包含两端的倒序乘法表，格式如 5 x 4 = 20。",
+      "solution": "multiplier=int(input())\nhigh=int(input())\nlow=int(input())\nfor n in range(high,low-1,-1):\n    print(f\"{n} x {multiplier} = {n*multiplier}\")\n",
+      "cases": [
+        {
+          "inputs": [
+            "4",
+            "5",
+            "3"
+          ],
+          "expected": "5 x 4 = 20\n4 x 4 = 16\n3 x 4 = 12",
+          "label": "4 / 5 / 3"
+        },
+        {
+          "inputs": [
+            "2",
+            "1",
+            "1"
+          ],
+          "expected": "1 x 2 = 2",
+          "label": "2 / 1 / 1"
+        }
+      ],
+      "required": [
+        "for"
+      ],
+      "validator": "exact",
+      "source": "第 10 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 10
+    },
+    {
+      "id": "T102",
+      "title": "倒序隔项与累加",
+      "topic": "loop",
+      "kind": "transfer",
+      "en": "Use while to print products of 9,7,5,3,1 times 6, one per line. Then print their sum on the last line.",
+      "zh": "用 while 从 9 倒序每次减 2，分行打印每项乘 6 的结果，最后一行输出所有结果之和。既有步长也有累加。",
+      "solution": "n=9\ntotal=0\nwhile n>=1:\n    value=n*6\n    print(value)\n    total+=value\n    n-=2\nprint(total)\n",
+      "cases": [
+        {
+          "inputs": [],
+          "expected": "54\n42\n30\n18\n6\n150",
+          "label": "无输入"
+        }
+      ],
+      "required": [
+        "while"
+      ],
+      "validator": "exact",
+      "source": "第 10 类综合迁移（额外拓展）",
+      "starter": "",
+      "hints": [
+        "先分清输入、处理和输出，再写出步骤。",
+        "检查数据类型、分支边界或循环更新；用一个小输入手动追踪。"
+      ],
+      "hw": 10
+    }
+  ],
+  "lessons": [
+    {
+      "id": "input",
+      "num": "01",
+      "title": "输入与表达式",
+      "subtitle": "从文字到数字",
+      "paragraphs": [
+        "字符串是文字，如 \"12\"；整数是 12；浮点数是 12.5。变量为值命名，带引号的变量名只是文字。",
+        "input() 总返回字符串。购买数量通常用 int(input())；金额与距离通常用 float(input())。int(\"2.5\") 会报错。",
+        "括号改变运算顺序。折扣率 10% 在计算中写 0.10；原价−折扣金额=折后金额。引号包住字符串；if/def/循环末尾要冒号，代码块要缩进。"
+      ],
+      "example": "n = int(input(\"数量：\"))\nprice = 22.50\noriginal = n * price\nsaving = original * 0.10\nprint(original - saving)",
+      "path": [
+        "S01",
+        "D01",
+        "P01",
+        "T031"
+      ],
+      "homeworks": [
+        1,
+        2,
+        3
+      ],
+      "completion": "n = ____\nprice = 22.50\noriginal = n * price\nsaving = original * 0.10\nprint(original - saving)"
+    },
+    {
+      "id": "format",
+      "num": "02",
+      "title": "输出格式",
+      "subtitle": "让结果清楚、准确",
+      "paragraphs": [
+        "f-string 前缀 f 让花括号中的表达式求值并插入；引号定义字符串范围。$ 和 % 在字符串中是普通字符。",
+        "{value:.2f} 用定点格式显示两位小数；{value:.0f} 显示零位小数并舍入，不等于直接截断。二进制浮点与恰好一半的舍入需注意；例如 2.5 的 :.0f 是 2。",
+        "print(\"Price Qty Total\") 可作表头，下一行按同样顺序分列。折扣金额不是折后金额；列标签要表达正确数值。"
+      ],
+      "example": "amount = 345.67\nsaving = amount * 0.05\nprint(\"Purchase Amount  Discount  Total\")\nprint(f\"${amount:.2f}  ${saving:.2f}  ${amount-saving:.2f}\")",
+      "path": [
+        "S08",
+        "D05",
+        "P04",
+        "T041"
+      ],
+      "homeworks": [
+        1,
+        2,
+        4,
+        5,
+        6
+      ],
+      "completion": "amount = 345.67\nsaving = amount * 0.05\nprint(\"Purchase Amount  Discount  Total\")\nprint(f\"${amount____}  ${saving:.2f}  ${amount-saving:.2f}\")"
+    },
+    {
+      "id": "condition",
+      "num": "03",
+      "title": "条件判断",
+      "subtitle": "把边界写进逻辑",
+      "paragraphs": [
+        "= 把值赋给变量，== 比较是否相等。字符串相等区分大小写；原题未要求宽容处理时，不擅自 lower()。",
+        "if / elif / else 依次判断，只执行第一个真分支。金额分档用 >=1000、>=500、>=200 的高到低顺序；也可写明低到高的互斥区间。",
+        "> 与 >= 的差别在边界，< 与 <= 同理。不同分支可输出不同内容。原题没有指定的负数、零或非法数字输入，不能偷偷变成原题测试；拓展题会明确写输入范围。"
+      ],
+      "example": "amount = float(input())\nif amount >= 1000:\n    rate = 0.20\nelif amount >= 500:\n    rate = 0.10\nelse:\n    rate = 0\nprint(rate)",
+      "path": [
+        "S12",
+        "D07",
+        "P05",
+        "T042"
+      ],
+      "homeworks": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        8
+      ],
+      "completion": "amount = float(input())\nif amount ____:\n    rate = 0.20\nelif amount >= 500:\n    rate = 0.10\nelse:\n    rate = 0\nprint(rate)"
+    },
+    {
+      "id": "function",
+      "num": "04",
+      "title": "函数与执行顺序",
+      "subtitle": "定义一次，调用多次",
+      "paragraphs": [
+        "def 定义函数，函数名(实参) 才调用它。定义中的变量是形参，调用时给出的值是实参；函数内部变量通常是局部变量。",
+        "return 把结果交给调用者并结束函数；print 只产生输出。没有 return 时返回 None。检查函数可返回 True 或 False。",
+        "函数可调用另一个函数。被调用函数可以在调用者的 def 后定义，关键是实际调用发生时名称已经定义。附件第 5 题的定义顺序建议不能作为 Python 的普遍规则。",
+        "通过用户输入选择不同函数；数字参数与返回值可参与后续计算。"
+      ],
+      "example": "def total(n):\n    return per_class() * n\n\ndef per_class():\n    return 10 * 1.5 + 7\n\nprint(total(3))",
+      "path": [
+        "S17",
+        "D10",
+        "P09",
+        "T051"
+      ],
+      "homeworks": [
+        5,
+        6,
+        8,
+        9
+      ],
+      "completion": "def total(n):\n    return ____\n\ndef per_class():\n    return 10 * 1.5 + 7\n\nprint(total(3))"
+    },
+    {
+      "id": "list",
+      "num": "05",
+      "title": "列表与去重",
+      "subtitle": "有顺序的一组值",
+      "paragraphs": [
+        "列表用 [] 创建。索引从 0 开始；len(items) 返回长度，末项索引为 len(items)−1。",
+        "append(x) 添加一个元素；extend([a,b]) 添加多个元素。sort() 原地排序且返回 None，不要写 items = items.sort()。del items[i] 按索引删除。",
+        "in / not in 用来判断成员。用 not in 再 append 可防止重复。列表可与函数、循环、计数结合；固定尝试次数和成功加入数量须分开记录。"
+      ],
+      "example": "movies = [\"Up\", \"Coco\", \"Dune\"]\nmovies.extend([\"Soul\", \"Arrival\", \"Jaws\"])\nmovies.sort()\ndel movies[2]\nprint(movies)",
+      "path": [
+        "S22",
+        "D14",
+        "P12",
+        "T071"
+      ],
+      "homeworks": [
+        7,
+        8
+      ],
+      "completion": "movies = [\"Up\", \"Coco\", \"Dune\"]\n____([\"Soul\", \"Arrival\", \"Jaws\"])\nmovies.sort()\ndel movies[2]\nprint(movies)"
+    },
+    {
+      "id": "loop",
+      "num": "06",
+      "title": "for 与 while",
+      "subtitle": "追踪开始、条件和更新",
+      "paragraphs": [
+        "range(start,stop,step) 包含起点、不包含终点。倒序 10～1 用 range(10,0,-1)，step 必须与方向一致。",
+        "while 需要初始值、继续条件、更新。例如 n=10，while n>=1，循环末尾 n-=1。忘记更新会死循环，网站可以停止工作线程。",
+        "累加器从 0 开始加数值；计数器按事件次数加 1。乘积从 1 开始。固定 7 次机会不同于收集 7 个有效答案。",
+        "同一任务可用 for 和 while 实现；附件第 10 题必须分别练习这两种写法。"
+      ],
+      "example": "n = 3\nwhile n >= 1:\n    print(f\"{n} times 9 is {n*9}\")\n    n -= 1",
+      "path": [
+        "S26",
+        "D18",
+        "P14",
+        "T102"
+      ],
+      "homeworks": [
+        2,
+        3,
+        8,
+        9,
+        10
+      ],
+      "completion": "n = 3\nwhile n >= 1:\n    print(f\"{n} times 9 is {n*9}\")\n    ____"
+    },
+    {
+      "id": "turtle",
+      "num": "07",
+      "title": "turtle 综合绘图",
+      "subtitle": "从指令到几何",
+      "paragraphs": [
+        "forward/backward 前进或后退，left/right 改变朝向。setpos(x,y) 改变位置；先 penup 再移动，到达后 pendown，避免连线。",
+        "pencolor 设置线色，fillcolor 设置填色；begin_fill 开始记录，end_fill 结束并填充。",
+        "多边形函数接收边数 n，外转角 360/n；本次作业指定边长 180/n。range(3,13) 覆盖 3～12。图形位置需要留出间距。",
+        "本网站在真实 Python 中运行这些指令，通过 SVG 兼容层展示，不使用桌面 Tk GUI。支持本课列出的指令；动画、鼠标事件、多只独立 turtle 和完整标准库 turtle API 不支持。"
+      ],
+      "example": "import turtle as t\nt.penup()\nt.setpos(0,0)\nt.pendown()\nt.pencolor(\"navy\")\nt.fillcolor(\"lightblue\")\nt.begin_fill()\nfor side in range(3):\n    t.forward(180/3)\n    t.left(360/3)\nt.end_fill()",
+      "path": [
+        "S29",
+        "D20",
+        "P17",
+        "T091"
+      ],
+      "homeworks": [
+        9
+      ],
+      "completion": "import turtle as t\nt.penup()\nt.setpos(0,0)\nt.pendown()\nt.pencolor(\"navy\")\nt.fillcolor(\"lightblue\")\nt.begin_fill()\nfor side in range(3):\n    t.forward(____)\n    t.left(360/3)\nt.end_fill()"
+    }
+  ],
+  "mapping": [
+    {
+      "number": 1,
+      "title": "The Lab Depot",
+      "source": "附件第 1 题",
+      "lessons": [
+        "input",
+        "format",
+        "condition"
+      ],
+      "specials": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06"
+      ],
+      "transfers": [
+        "T011",
+        "T012"
+      ],
+      "homework": "H01",
+      "notes": "每件 $22.50。读入购买数量、公司名称。只有名称恰好为 The Lab Depot 时减去总价的 10%，否则不打折。练习输出约定：金额带 $，保留两位小数；输入提示文字不参与判题。"
+    },
+    {
+      "number": 2,
+      "title": "Quantity discount",
+      "source": "附件第 2 题",
+      "lessons": [
+        "input",
+        "format",
+        "condition",
+        "loop"
+      ],
+      "specials": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S25",
+        "S26",
+        "S27",
+        "S28",
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D17",
+        "D18",
+        "D19",
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P13",
+        "P14",
+        "P15",
+        "P16"
+      ],
+      "transfers": [
+        "T021",
+        "T022"
+      ],
+      "homework": "H02",
+      "notes": "每件 $20。1～5 件分别优惠 5%、6%、7%、8%、9%；超过 5 件优惠 10%。前一个分支显示百分比，后一个分支只显示折后金额。金额按示例保留两位小数。没有额外增加负数或零输入判错条件。"
+    },
+    {
+      "number": 3,
+      "title": "Deduct from 100",
+      "source": "附件第 3 题",
+      "lessons": [
+        "input",
+        "condition",
+        "loop"
+      ],
+      "specials": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S25",
+        "S26",
+        "S27",
+        "S28",
+        "D01",
+        "D02",
+        "D03",
+        "D06",
+        "D07",
+        "D08",
+        "D17",
+        "D18",
+        "D19",
+        "P01",
+        "P02",
+        "P05",
+        "P06",
+        "P13",
+        "P14",
+        "P15",
+        "P16"
+      ],
+      "transfers": [
+        "T031",
+        "T032"
+      ],
+      "homework": "H03",
+      "notes": "读 y/n。n 时输出 Bye Bye，不再读数字；y 时读入 3 个数，输出 100 减去三数之和。附件没有规定其他输入的处理；测试仅覆盖 y 与 n。"
+    },
+    {
+      "number": 4,
+      "title": "Tiered discount table",
+      "source": "附件第 4 题",
+      "lessons": [
+        "format",
+        "condition"
+      ],
+      "specials": [
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "P03",
+        "P04",
+        "P05",
+        "P06"
+      ],
+      "transfers": [
+        "T041",
+        "T042"
+      ],
+      "homework": "H04",
+      "notes": "用 if / elif 分档：≥1000 为 20%，≥500 为 10%，≥200 为 5%，低于 200 不优惠。三列分别是原价、折扣金额、折后金额。按图片示例显示表头、$ 和两位小数；列间空格可不同。"
+    },
+    {
+      "number": 5,
+      "title": "Calling one function from another",
+      "source": "附件第 5 题",
+      "lessons": [
+        "format",
+        "function"
+      ],
+      "specials": [
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20",
+        "D04",
+        "D05",
+        "D09",
+        "D10",
+        "D11",
+        "D12",
+        "P03",
+        "P04",
+        "P07",
+        "P08",
+        "P09"
+      ],
+      "transfers": [
+        "T051",
+        "T052"
+      ],
+      "homework": "H05",
+      "notes": "按附件代码建立 hours_classes() 和 total_hours(num_classes)，每门课 10×1.5+7 小时。第二个函数调用第一个。读课程数，输出 Total Hours: {结果:.0f}.。附件把被调用函数先定义作为建议；Python 实际要求是调用发生时名称已定义，不要求两条 def 固定先后。"
+    },
+    {
+      "number": 6,
+      "title": "Miles ↔ kilometres",
+      "source": "附件第 6 题",
+      "lessons": [
+        "format",
+        "condition",
+        "function"
+      ],
+      "specials": [
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10",
+        "D11",
+        "D12",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09"
+      ],
+      "transfers": [
+        "T061",
+        "T062"
+      ],
+      "homework": "H06",
+      "notes": "输入距离和单位，按单位调用不同转换函数。miles=kilometres/1.60934；kilometers=miles×1.60934。图片提示和示例用 Kilometers、Miles（大写首字母），正文用小写。原题没有严格规定大小写接受策略：本练习明确使用这两个示例词，不额外测试小写或英式拼写；无效单位用 Feet 测试。输出按示例保留两位小数及转换后的单位。"
+    },
+    {
+      "number": 7,
+      "title": "A movie list",
+      "source": "附件第 7 题",
+      "lessons": [
+        "list"
+      ],
+      "specials": [
+        "S21",
+        "S22",
+        "S23",
+        "S24",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "P10",
+        "P11",
+        "P12",
+        "P20"
+      ],
+      "transfers": [
+        "T071",
+        "T072"
+      ],
+      "homework": "H07",
+      "notes": "创建包含 3 个喜欢的电影的列表。用 extend() 再加入 3 个，用 sort() 原地排序，再用 del 删除 1 个，打印检查结果。电影名和删除哪部可自行选择，判题不限定为示例答案。"
+    },
+    {
+      "number": 8,
+      "title": "Seven attempts, not seven successes",
+      "source": "附件第 8 题",
+      "lessons": [
+        "condition",
+        "function",
+        "list",
+        "loop"
+      ],
+      "specials": [
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20",
+        "S21",
+        "S22",
+        "S23",
+        "S24",
+        "S25",
+        "S26",
+        "S27",
+        "S28",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17",
+        "D18",
+        "D19",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P10",
+        "P11",
+        "P12",
+        "P13",
+        "P14",
+        "P15",
+        "P16",
+        "P20"
+      ],
+      "transfers": [
+        "T081",
+        "T082"
+      ],
+      "homework": "H08",
+      "notes": "恰好问 7 次。函数检查是否为有效星期、是否重复；重复或无效时说明原因，返回 True/False。仅 True 时加入列表并显示。结尾报告答对数量。图片明确将 wednesday 判错，所以不自动转小写或放宽大小写。重复和无效输入也占一次机会。"
+    },
+    {
+      "number": 9,
+      "title": "Separate polygons",
+      "source": "附件第 9 题",
+      "lessons": [
+        "function",
+        "loop",
+        "turtle"
+      ],
+      "specials": [
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20",
+        "S25",
+        "S26",
+        "S27",
+        "S28",
+        "S29",
+        "S30",
+        "D09",
+        "D10",
+        "D11",
+        "D12",
+        "D17",
+        "D18",
+        "D19",
+        "D20",
+        "P07",
+        "P08",
+        "P09",
+        "P13",
+        "P14",
+        "P15",
+        "P16",
+        "P17",
+        "P18",
+        "P19"
+      ],
+      "transfers": [
+        "T091",
+        "T092"
+      ],
+      "homework": "H09",
+      "notes": "用带边数参数的函数绘制多边形，边长 180/n，转角 360/n。循环覆盖 3～12；每个图形前抬笔、setpos、落笔；设置线条和填充颜色。本平台采用 begin_fill/end_fill 验证填充。附件写了“如下图”，但上传图片没有示例图，不限定具体配色或布局。"
+    },
+    {
+      "number": 10,
+      "title": "Two ways to count down",
+      "source": "附件第 10 题",
+      "lessons": [
+        "loop"
+      ],
+      "specials": [
+        "S25",
+        "S26",
+        "S27",
+        "S28",
+        "D17",
+        "D18",
+        "D19",
+        "P13",
+        "P14",
+        "P15",
+        "P16"
+      ],
+      "transfers": [
+        "T101",
+        "T102"
+      ],
+      "homework": "H10",
+      "notes": "分别提交两份程序：一份用 for，一份用 while。从 10 到 1 输出乘 9 的结果，恰好 10 行，首末行和句式须与附件一致。"
+    }
+  ],
+  "counts": {
+    "short": 30,
+    "debug": 20,
+    "program": 20,
+    "transfer": 20,
+    "homework": 10
+  },
+  "version": "2026-10-08-v1",
+  "sourceFile": "PS- National Holiday HW.zip",
+  "verified": false,
+  "sourceNotes": [
+    "压缩包中 10 张作业图片已逐张阅读，另有 file name.jpg 命名示例。",
+    "第 9 题引用的图例未包含在上传图片中；按文字要求验证，不假定布局与配色。",
+    "第 6 题正文和示例单位大小写不同；练习显式采用示例 Kilometers/Miles，不擅自判错未指定输入。",
+    "file name.jpg 示例为 z1234444_01_the_lab_depot.py。未提供你的学号，不生成或假定学号。",
+    "学习与拓展题的精确输出约定会写在题面；原题输入提示文本、未规定负数/零、大小写扩展不作为隐藏判错条件。"
+  ]
+}
